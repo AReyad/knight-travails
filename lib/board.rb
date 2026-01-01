@@ -20,7 +20,7 @@ class Board
   def knight_move(start_point, end_point)
     create_tiles
 
-    assign_parents(start_point)
+    assign_parents(start_point, end_point)
     path = path(end_point)
 
     puts "=> You made it in #{path.length - 1} moves! Here's your path:"
@@ -43,9 +43,9 @@ class Board
     tile.edges = assign_edges(tile)
   end
 
-  def assign_parents(start_point, queue = [], edges = queue_starting_point(start_point, queue))
+  def assign_parents(start_point, end_point, queue = [], edges = queue_starting_point(start_point, queue))
     # Performs a BFS(Breadth-first search) on the board and assigns parents to start_point's edges(neighbours).
-    until queue.empty?
+    until tile(end_point).parent
       first = queue.shift
       edges.each do |edge|
         tile = tile(edge)
