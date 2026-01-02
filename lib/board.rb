@@ -10,9 +10,9 @@ class Board
 
   def valid_moves(position)
     knight_moves = [[2, 1], [2, -1], [1, 2], [1, -2], [-2, 1], [-2, -1], [-1, 2], [-1, -2]]
-    knight_moves.select.with_index do |_move, index|
-      row = knight_moves[index][0] += position[0]
-      col = knight_moves[index][1] += position[1]
+    knight_moves.select do |move|
+      row = move[0] += position[0]
+      col = move[1] += position[1]
       [col, row] if valid_position?(col) && valid_position?(row)
     end
   end
