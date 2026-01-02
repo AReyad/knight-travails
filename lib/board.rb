@@ -61,9 +61,7 @@ class Board
   def assign_edges(node)
     return unless node.edges.empty?
 
-    valid_moves(node.position).each do |edge|
-      node.edges << edge
-    end
+    node.edges = valid_moves(node.position)
   end
 
   def path(end_point)
